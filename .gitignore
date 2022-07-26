@@ -3,3 +3,6 @@
 .DS_store
 db.sqlite3
 __pycache__
+*.jpg
+*.png
+*.jpeg
