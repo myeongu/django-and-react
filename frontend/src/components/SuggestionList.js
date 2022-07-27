@@ -4,6 +4,7 @@ import Suggestion from "./Suggestion";
 import { useAppContext } from "store";
 import useAxios from 'axios-hooks'
 import "./SuggestionList.scss"
+import axios from "axios";
 
 
 export default function SuggestionList({ style }) {
@@ -28,11 +29,20 @@ export default function SuggestionList({ style }) {
     }, [originUserList])
     
     const onFollowUser = (username) => {
-        setUserList(prevUserList => {
-            return prevUserList.map(user => 
-                ( user.username !== username ) ? user : { ...user, is_follow: true}
-            )
-        })
+        const data = { username };
+        const config = { headers }
+        axios.post("http://localhost:8000/accounts/follow/", data, config)
+            .then(response => {
+                setUserList(prevUserList => {
+                    return prevUserList.map(user => 
+                        ( user.username !== username ) ? user : { ...user, is_follow: true}
+                    )
+                })
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
     }
 
     return (
