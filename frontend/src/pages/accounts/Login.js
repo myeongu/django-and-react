@@ -4,13 +4,14 @@ import { SmileOutlined, FrownOutlined } from "@ant-design/icons";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"
 import useLocalStorage from "utils/useLocalStorage";
+import { useAppContext } from "store";
+import { setToken } from "store";
 
 export default function Login() {
+    const { dispatch } = useAppContext();
     const navigate = useNavigate();
-    const [jwtToken, setJwtToken] = useLocalStorage("jwtToken", "");
+    // const [jwtToken, setJwtToken] = useLocalStorage("jwtToken", "");
     const [fieldErrors, setFieldErrors] = useState({});
-
-    console.log("loaded jwtToken : ", jwtToken);
 
     const onFinish = values => {
         async function fn() {
@@ -23,7 +24,9 @@ export default function Login() {
                 const response = await axios.post("http://localhost:8000/accounts/token/", data);
                 const { data: { token: jwtToken }} = response;
                 
-                setJwtToken(jwtToken)
+                // setJwtToken(jwtToken)
+                dispatch(setToken(jwtToken)) ;
+
                 console.log(jwtToken)
 
                 notification.open({
