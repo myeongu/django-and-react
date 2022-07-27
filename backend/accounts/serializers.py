@@ -1,8 +1,8 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-
 User = get_user_model()
+
 
 class SignupSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
@@ -13,7 +13,12 @@ class SignupSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
-
     class Meta:
         model = User
-        fields = ["pk", 'username', 'password'] # pk는 ReadOnly
+        fields = ["pk", 'username', 'password']  # pk는 ReadOnly
+
+
+class SuggestionUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username', 'name', 'avatar_url']

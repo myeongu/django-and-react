@@ -9,9 +9,8 @@ const apiUrl = "http://127.0.0.1:8000/api/posts/";
 function PostList() {
     const { store: { jwtToken } } = useAppContext();
     const [ postList, setPostList ] = useState([]);
-    console.log("jwtToken : ", jwtToken)
     useEffect(() => {
-        const headers = { Authorization: `JWT ${jwtToken}` };
+        const headers = { Authorization: `Bearer ${jwtToken}` };
         axios.get(apiUrl, { headers })
             .then(response => {
                 const { data } = response;
