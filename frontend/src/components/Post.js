@@ -1,9 +1,10 @@
 import React from "react";
 import { Card, Avatar } from "antd";
-import { HeartOutlined, HeartFilled, UserOutlined } from "@ant-design/icons";
+import { HeartOutlined, HeartFilled } from "@ant-design/icons";
 
 function Post({ post }) {
-    const { caption, location, photo } = post;
+    const { author, caption, location, photo, tag_set, like_user_set } = post;
+    const { username, name, avatar_url } = author;
     return (
         <div>
             <Card
@@ -15,7 +16,9 @@ function Post({ post }) {
                 ]}
             >
                 <Card.Meta 
-                    avatar={<Avatar size={"large"} icon={<UserOutlined />} />}
+                    avatar={<Avatar size={"large"} 
+                                    icon={<img src={`http://localhost:8000` + avatar_url} alt={username} />} 
+                            />}
                     title={location} 
                     description={caption} 
                 />

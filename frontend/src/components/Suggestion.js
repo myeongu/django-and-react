@@ -1,5 +1,4 @@
 import React from "react";
-import { UserOutlined } from "@ant-design/icons"
 import { Avatar, Button } from "antd";
 import "./Suggestion.scss"
 
