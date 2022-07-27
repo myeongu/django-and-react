@@ -12,7 +12,7 @@ function Root() {
         <AppLayout>
             <Routes>
                 <Route path="/" element={<LoginRequiredPage />}>
-                    <Route path="/" element={<Home />} />
+                    <Route path="" element={<Home />} />
                 </Route>
                 <Route path="/about" element={<About />} />
                 <Route path="/accounts/*" element={<AccountsRoutes />} />

@@ -10,7 +10,7 @@ function AccountsRoutes() {
         <>
             <Routes>
                 <Route path="/profile/" element={<LoginRequiredPage />}>
-                    <Route path="/" element={<Profile />} />
+                    <Route path="" element={<Profile />} />
                 </Route>
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
