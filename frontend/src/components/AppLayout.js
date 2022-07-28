@@ -6,7 +6,7 @@ function AppLayout({ children, sidebar }) {
     return (
         <div className="app">
             <div className="header">
-                <h1 className="page-title">Instagram</h1>
+                <h1 className="page-title">Bon Virant</h1>
                 <div className="search">
                     <Input.Search />
                 </div>
