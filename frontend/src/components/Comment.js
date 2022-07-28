@@ -10,7 +10,7 @@ export default function Comment({ comment }) {
                     author={displayName}
                     avatar={<Avatar 
                                 // FIXME: avatar_url에 host 지정
-                                src={"http://localhost:8000" + avatar_url} 
+                                src={avatar_url} 
                                 alt={displayName} />}
                     content={
                         <p>

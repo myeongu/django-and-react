@@ -21,7 +21,7 @@ function Post({ post, handleLike }) {
             >
                 <Card.Meta 
                     avatar={<Avatar size={"large"} 
-                                    icon={<img src={`http://localhost:8000` + avatar_url} alt={username} />} 
+                                    icon={<img src={avatar_url} alt={username} />} 
                             />}
                     title={location} 
                     description={caption} 

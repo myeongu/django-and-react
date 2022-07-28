@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Button, Form, Input, message, Modal, notification, Upload } from "antd";
 import { PlusOutlined, FrownOutlined } from "@ant-design/icons";
 import { getBase64FromFile } from "utils/base64";
-import axios from "axios";
 import { useAppContext } from "store";
 import { parseErrorMessages } from "utils/forms";
 import { useNavigate } from "react-router-dom";
+import { axiosInstance } from "api";
 
 export default function PostNewForm() {
     const { store: { jwtToken }} = useAppContext();
@@ -44,7 +44,7 @@ export default function PostNewForm() {
         
         const headers = { Authorization: `Bearer ${jwtToken}`}
         try {
-            const response = await axios.post("http://localhost:8000/api/posts/", formData, { headers })
+            const response = await axiosInstance.post("/api/posts/", formData, { headers })
             console.log("success response: ", response)
             navigate("/")
         }
