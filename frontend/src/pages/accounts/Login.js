@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom"
 import useLocalStorage from "utils/useLocalStorage";
 import { useAppContext } from "store";
 import { setToken } from "store";
+import { parseErrorMessages } from "utils/forms";
 
 export default function Login() {
     const { dispatch } = useAppContext();
@@ -49,16 +50,8 @@ export default function Login() {
                     })
 
                     const { data: fieldsErrorMessages } = error.response;
-                    setFieldErrors(
-                        Object.entries(fieldsErrorMessages).reduce(
-                            (acc, [fieldName, errors]) => {
-                                acc[fieldName] = {
-                                    validateStatus: "error",
-                                    help: errors.join(" "),
-                            }
-                            return acc
-                        }, {})
-                    )
+                    
+                    setFieldErrors(parseErrorMessages(fieldsErrorMessages))
 
                 }
             }
